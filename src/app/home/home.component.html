@@ -1,0 +1,31 @@
+<div class="container-fluid mainContainer">
+    <div class="row">
+        <div class="col-lg-6 col-md-12 rm-padding">
+           <div class="container">
+               <h4>List of the cities</h4>
+               <hr>
+            <select formControlName="name" class="form-group" (change)="changeCity($event)">
+                <option disabled selected>Select City</option>
+                <option *ngFor="let list of cityList">{{list.City}}</option>
+              </select> 
+           </div>
+           
+        </div>
+        <div class="col-lg-6 col-md-12 rm-padding">
+            <agm-map [latitude]="latitude"
+            [longitude]="longitude"
+            [zoom]="zoom"
+            [disableDefaultUI]="false"
+            [zoomControl]="false">
+            <agm-marker 
+            *ngFor="let m of markers; let i = index"
+            [latitude]="m.lat"
+            [longitude]="m.lng"
+            [label]="m.label">
+          
+            </agm-marker>
+            </agm-map>
+        </div>
+    </div>
+</div>
+
